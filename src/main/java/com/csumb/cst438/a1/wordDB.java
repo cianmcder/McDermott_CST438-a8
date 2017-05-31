@@ -43,7 +43,7 @@ public class wordDB
     }
     public static Word selectWord(int id) {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT w FROM Word w " +
+        String qString = "SELECT w FROM word w " +
                 "WHERE w.id = :id";
         TypedQuery<Word> q = em.createQuery(qString, Word.class);
         q.setParameter("id", id);
@@ -58,7 +58,7 @@ public class wordDB
     }
     public static List<Word> selectWords() {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
-        String qString = "SELECT w from Word w";
+        String qString = "SELECT w from word w";
         TypedQuery<Word> q = em.createQuery(qString, Word.class);
 
         List<Word> words;

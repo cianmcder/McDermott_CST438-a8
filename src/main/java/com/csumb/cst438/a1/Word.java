@@ -10,13 +10,13 @@ import javax.persistence.Id;
  * @author Cian
  */
 @Entity
-public class Word
+public class Word implements Serializable
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String word;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getId()
     {
         return id;

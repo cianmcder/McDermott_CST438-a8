@@ -13,6 +13,8 @@ import com.csumb.cst438.a1.MyHttpServer;
  */
 public class GameServlet extends HttpServlet
 {
+    Game game = new Game();
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
@@ -23,7 +25,7 @@ public class GameServlet extends HttpServlet
         // get current action
         String action = request.getParameter("action");
         // print action value to console
-        System.out.println("EmailListServlet action: " + action);
+        System.out.println("GameServlet action: " + action);
         
         if (action == null)
         {
@@ -33,24 +35,28 @@ public class GameServlet extends HttpServlet
         // perform action and set URL to appropriate page
         if(action.equals("new_game"))
         {
-            Game.startNewGame();
+            game.startNewGame();
         }
         else if(action.equals("correct_guess"))
         {
-            Game.playGame();
+            game.playGame();
         }
         else if(action.equals("incorrect_guess"))
         {
-            Game.playGame();]
+            game.playGame();
         }
         else if(action.equals("win"))
         {
-            Game.playGame();
+            game.playGame();
         }
         else if(action.equals("lose"))
         {
-            Game.playGame();
+            game.playGame();
         }
+        
+        getServletContext()
+                .getRequestDispatcher(url)
+                .forward(request, response);
     }
     
     @Override
